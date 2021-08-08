@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: black;
+  color: goldenrod;
+}
+#navbar {
+  display: flex;
+  border: 1px solid #ffffff;
+  padding-top: 1%;
+  padding-left: 1%;
+  padding-bottom: 1%;
+  padding-right: 1%;
+  justify-content: space-between;
+  /* height: 20vh; */
+  /* position: absolute; */
+}
+#logodetails,
+#features {
+  display: flex;
+}
+#features p {
+  margin-left: 2%;
+  text-align: center;
+  cursor: pointer;
+}
+#features p:hover {
+  color: white;
+}
+#logodetails h1,
+#logodetails h4 {
+  text-align: center;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  margin-left: 10px;
+  cursor: pointer;
+}
+#logodetails img {
+  height: 70px;
+  cursor: pointer;
+}
+#logodetails h1 {
+  margin-top: 8px;
+}
+#logodetails h4 {
+  margin-top: 5px;
+}
+a {
+  color: goldenrod;
+  text-decoration: none;
+}
+#inputfood {
+  background-color: black;
+  text-align: center;
+  margin: auto;
+  /* margin-top: 3%; */
+  outline: none;
+  color: white;
+  display: flex;
+  width: 300px;
+  height: 30px;
+  border-radius: 25px;
+  border: 1px solid gray;
+}
+.displaydiv {
+  width: 70%;
+  margin: auto;
+  /* border: 2px solid white; */
+  /* visibility: hidden; */
+}
+.displaydiv > div {
+  border: 2px solid white;
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}
+.white-text {
+  color: white !important;
+}

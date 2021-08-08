@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="shortcut icon" href="https://www.themealdb.com/images/icons/favicon/apple-touch-icon.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    
+</body>
+
+</html>
+
+<script type="module">
+    import navbar from "./components/navbar.js"
+    let navbardiv = document.createElement("div")
+    navbardiv.innerHTML = navbar();
+
+    document.body.append(navbardiv)
+
+    let searchBar = document.getElementById("inputfood");
+    searchBar.addEventListener("click",(()=> {
+        alert("Please use the 'Search By Recipe' page to search for your favorite recipes.")
+    }))
+
+    let displaydiv = document.createElement("div")
+    let imageArray = ["https://thumbs.gfycat.com/DirtyOldfashionedBlackmamba-size_restricted.gif","https://thumbs.gfycat.com/CreativeCleanGoldeneye-size_restricted.gif","https://media2.giphy.com/media/3oEdv95djsZoDJLxmM/giphy.gif","https://i.gifer.com/U0n0.gif"]
+    let img = document.createElement("img");
+    img.style.height="400px"
+    img.style.marginTop = "40px"
+    let i=0;
+    img.src = imageArray[i]
+
+        displaydiv.append(img)
+        displaydiv.style.display = "flex"
+        displaydiv.style.alignItems = "center"
+        displaydiv.style.justifyContent = "center"
+        document.body.append(displaydiv)
+    setInterval(() => {
+        displaydiv.innerHTML="";
+        if (i == imageArray.length-1) {
+            i=-1;
+        }
+        i++
+        img.src = imageArray[i]
+        
+        displaydiv.append(img)
+        displaydiv.style.display="flex"
+        displaydiv.style.alignItems="center"
+        displaydiv.style.justifyContent = "center"
+        document.body.append(displaydiv)
+    }, 2000);
+
+</script>

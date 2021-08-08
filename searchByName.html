@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="shortcut icon" href="https://www.themealdb.com/images/icons/favicon/apple-touch-icon.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    
+</body>
+
+</html>
+
+<script type="module">
+    import navbar from "./components/navbar.js"
+    let navbardiv = document.createElement("div")
+    navbardiv.innerHTML = navbar();
+
+    document.body.append(navbardiv)
+
+    import {GetRecipe, DisplayRecipe} from "./scripts/showRecipes.js"
+
+    let displaydiv = document.createElement("div");
+    displaydiv.setAttribute("class","displaydiv")
+    
+    
+
+    
+    
+    let input = document.getElementById("inputfood");
+    
+    let ThrottleFunction = () => {
+        let timerid;
+        return () => {
+            if (timerid) {
+                clearTimeout(timerid);
+                // clearTimeout(processTimer)
+            }
+            
+            
+            timerid = setTimeout(() => {
+                // clearTimeout(processTimer)
+                displaydiv.innerHTML = "";
+                fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input.value}`)
+
+                    .then((res) => {
+                        return res.json();
+                    })
+                    .then((res2) => {
+                        // console.log('res2:', res2)
+                        // return res2;
+                        DisplayRecipe(res2, displaydiv);
+                        displaydiv.style.visibility = "visible";
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+                timerid = undefined
+                
+                setTimeout(() => {
+                    input.value = "";
+                }, 1500)
+            }, 1500)
+        }
+    }
+    let fun = ThrottleFunction()
+    // search.addEventListener("input", fun)
+    
+    /*input.addEventListener("keypress", (event) => {
+        
+        if (event.code == "Enter") {
+            displaydiv.innerHTML = "";
+            let result = GetRecipe(
+                `https://www.themealdb.com/api/json/v1/1/search.php?s=${input.value}`
+            );
+            DisplayRecipe(result, displaydiv);
+            displaydiv.style.visibility = "visible";
+            setTimeout(()=> {
+                input.value = "";
+            },1500)
+        }
+
+        
+    });*/
+
+    // input.addEventListener()
+    input.addEventListener("input",fun);
+
+    
+    document.body.append(displaydiv)
+    
+</script>
+
